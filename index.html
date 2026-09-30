@@ -11216,7 +11216,7 @@ dayjs.extend(window.dayjs_plugin_jalali);
             try {
                 controller = new AbortController();
                 timer = setTimeout(() => controller.abort(), timeoutMs);
-                const base = (typeof supabaseConfig !== 'undefined' && supabaseConfig && supabaseConfig.supabaseUrl) ? supabaseConfig.supabaseUrl : 'https://meuxvupdlgqybwzccgox.supabase.co';
+                const base = (typeof supabaseConfig !== 'undefined' && supabaseConfig && supabaseConfig.supabaseUrl) ? supabaseConfig.supabaseUrl : 'https://demo-mode.artemis.invalid';
                 const anonKey = (typeof supabaseConfig !== 'undefined' && supabaseConfig && supabaseConfig.supabaseKey) ? supabaseConfig.supabaseKey : '';
                 // نکته: اندپوینت auth/v1/health بدون هدر apikey خطای 401 برمی‌گردونه
                 // (نه به این معنی که واقعاً آفلاینیم). قبلاً این هدر فرستاده نمی‌شد و
@@ -26636,7 +26636,7 @@ window.getSelectedDateString = function(){
 // اجرا می‌شود و در لحظه‌ی parse شدن این خط، window.ARTEMIS_SUPABASE_URL هنوز
 // مقداردهی نشده؛ با تبدیل به تابع، مقدار در لحظه‌ی واقعی فراخوانی (کلیک کاربر) خوانده می‌شود.
 function getInvoiceScannerFunctionUrl() {
-    return (window.ARTEMIS_SUPABASE_URL || "https://meuxvupdlgqybwzccgox.supabase.co") + "/functions/v1/invoice-scanner";
+    return (window.ARTEMIS_SUPABASE_URL || "https://demo-mode.artemis.invalid") + "/functions/v1/invoice-scanner";
 }
 // این رمز باید دقیقاً با مقدار INVOICE_SCANNER_SECRET که در Supabase Edge Function secrets ست کردید یکی باشه.
 // چون این کد سمت کلاینته، این رمز از طریق "مشاهده کد صفحه" قابل دیدنه — فقط جلوی سواستفاده عمومی/تصادفی رو می‌گیره.
