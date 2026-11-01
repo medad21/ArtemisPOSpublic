@@ -1,17 +1,57 @@
-# Artemis ERP — Inventory & Sales Management System
+<div align="center">
 
-🌐 **[English](README.md) | [فارسی](README.fa.md) | [Deutsch](README.de.md) | [العربية](README.ar.md)**
+<img src="docs/branding/artemis-mark.svg" width="104" height="104" alt="Artemis logo">
 
-**A full-stack business management and point-of-sale (POS) application for small businesses and retail stores, with a database-aware AI assistant and sales forecasting built in.**
+# Artemis ERP
+### Inventory · Sales · Business Intelligence
 
-`JavaScript` · `HTML/CSS` · `Supabase` · `PostgreSQL` · `Capacitor` · `Gemini API`
+**A modern retail management and POS platform with offline workflows, real-time Supabase sync, and an AI-powered business assistant.**
 
-![Artemis dashboard](docs/screenshots/dashboard.png)
+<p>
+  <img src="https://img.shields.io/badge/version-6.1.0-7c3aed?style=for-the-badge" alt="Version 6.1.0">
+  <img src="https://img.shields.io/badge/AI-Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Gemini AI">
+  <img src="https://img.shields.io/badge/backend-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+</p>
+<p>
+  <img src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Web-HTML%20%2F%20CSS-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML and CSS">
+  <img src="https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Mobile-Android%20%2F%20Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white" alt="Android and Capacitor">
+  <img src="https://img.shields.io/badge/Mode-Offline%20Ready-238636?style=flat-square" alt="Offline ready">
+</p>
+
+**Point of sale · Inventory · Returns · Accounting · Forecasting · AI assistant**
+
+🌐 **[English](README.md) · [فارسی](README.fa.md) · [Deutsch](README.de.md) · [العربية](README.ar.md)**
+
+<img src="docs/screenshots/dashboard.png" alt="Artemis dashboard" width="92%">
+
+</div>
 
 **At a glance:**
 - Full retail POS/ERP (sales, inventory, returns, accounting, printing) — plus a database-aware AI assistant and heuristic sales forecasting, not just CRUD.
 - Self-hosted on your own Supabase project (Postgres + Auth + Realtime + Edge Functions); ships as both a web app and a native Android app via Capacitor.
 - Built and refined over two years of real, daily use in an actual store — not a tutorial project.
+
+---
+
+**Contents**
+
+- [Overview](#overview)
+- [Why Artemis?](#why-artemis)
+- [Core Features](#core-features)
+- [AI-Powered Business Assistant](#ai-powered-business-assistant)
+- [Technical Architecture](#technical-architecture)
+- [Offline & Synchronization](#offline--synchronization)
+- [Security & Authorization](#security--authorization)
+- [Screenshots](#screenshots)
+- [Getting Started](#getting-started)
+- [Android Build](#android-build)
+- [Engineering Highlights](#engineering-highlights)
+- [Repository Structure](#repository-structure)
+- [Public Repository Notice](#public-repository-notice)
+- [Author](#author)
+- [License](#license)
 
 ---
 
@@ -21,6 +61,7 @@
 
 It runs as a browser-based web app **and** as a native Android app (via Capacitor), both backed by a self-hosted [Supabase](https://supabase.com) project — every deployment owns its own data completely.
 
+> [!NOTE]
 > **Project status:** Active personal project, in daily production use. This repository is a public demo/portfolio version — see [Public Repository Notice](#public-repository-notice).
 
 ## Why Artemis?
@@ -39,25 +80,18 @@ Concrete examples from this codebase: item exchanges that settle only the price 
 
 ## Core Features
 
-**POS & Sales** — Barcode-scanning checkout, discounts, cash/card/transfer/credit payments, wholesale (colleague) sales, and a separate job-costing module for service work (e.g. print/copy jobs) with itemized cost-component breakdown.
-
-**Inventory Management** — Stock tracking with low-stock alerts, categories, Kardex (in/out history) per item, and barcode label generation/printing for items that don't already have one.
-
-**Returns & Exchanges** — Partial/full returns with automatic stock and profit adjustment; item exchanges that settle only the price difference, fully tracked rather than handled as a manual workaround.
-
-**Customer Management** — Profiles, purchase history, debt tracking, and bulk SMS to debtors/all customers/custom numbers through a swappable provider layer (Kavenegar, MeliPayamak, SMS.ir, or any REST API via a generic webhook).
-
-**Loyalty System** — Points-based loyalty with configurable earn/redeem rates and purchase-based customer tiers (regular / active buyer / VIP).
-
-**Accounting & Reports** — Balance sheet, multiple cash/bank accounts, expense tracking, opening balance, daily/profit reports, and purchase/check-payment reminders.
-
-**Printing** — A4/A5/A6 and thermal receipt printing (58mm/80mm), direct Bluetooth printing from the Android app, fully configurable invoice content, and amount-in-words.
-
-**Multi-user** — Manager/staff roles with separate logins and per-staff action tracking.
-
-**Localization** — Persian, English, German, Arabic, with full RTL support and multi-currency.
-
-**Web + Android** — Single-file web app (no build step) plus a Capacitor-packaged Android app with camera barcode scanning, fingerprint login, and local notifications.
+| Area | Details |
+|---|---|
+| **POS & Sales** | Barcode-scanning checkout, discounts, cash/card/transfer/credit payments, wholesale (colleague) sales, and a separate job-costing module for service work (e.g. print/copy jobs) with itemized cost-component breakdown. |
+| **Inventory Management** | Stock tracking with low-stock alerts, categories, Kardex (in/out history) per item, and barcode label generation/printing for items that don't already have one. |
+| **Returns & Exchanges** | Partial/full returns with automatic stock and profit adjustment; item exchanges that settle only the price difference, fully tracked rather than handled as a manual workaround. |
+| **Customer Management** | Profiles, purchase history, debt tracking, and bulk SMS to debtors/all customers/custom numbers through a swappable provider layer (Kavenegar, MeliPayamak, SMS.ir, or any REST API via a generic webhook). |
+| **Loyalty System** | Points-based loyalty with configurable earn/redeem rates and purchase-based customer tiers (regular / active buyer / VIP). |
+| **Accounting & Reports** | Balance sheet, multiple cash/bank accounts, expense tracking, opening balance, daily/profit reports, and purchase/check-payment reminders. |
+| **Printing** | A4/A5/A6 and thermal receipt printing (58mm/80mm), direct Bluetooth printing from the Android app, fully configurable invoice content, and amount-in-words. |
+| **Multi-user** | Manager/staff roles with separate logins and per-staff action tracking. |
+| **Localization** | Persian, English, German, Arabic, with full RTL support and multi-currency. |
+| **Web + Android** | Single-file web app (no build step) plus a Capacitor-packaged Android app with camera barcode scanning, fingerprint login, and local notifications. |
 
 ---
 
@@ -99,31 +133,26 @@ Financial and inventory queries can require a separate access code before the as
 
 ## Technical Architecture
 
-```text
-                          Artemis
-                              |
-             +----------------+----------------+
-             |                                 |
-        Web / Browser                     Android App
-             |                                 |
-             +----------------+----------------+
-                              |
-                           Supabase
-                              |
-       +----------------------+----------------------+
-       |                      |                       |
-   PostgreSQL              Auth (RLS)              Realtime
-       |
-   Edge Functions
-       |
-  Gemini AI Assistant · SMS Gateway · Invoice Scanner
+```mermaid
+flowchart TB
+    APP(["Artemis"]) --> WEB["Web / Browser"]
+    APP --> AND["Android App"]
+    WEB --> SB
+    AND --> SB
+    subgraph SB["Supabase"]
+        PG[("PostgreSQL")]
+        AU["Auth (RLS)"]
+        RT["Realtime"]
+        EF["Edge Functions"]
+    end
+    EF --> AI["Gemini AI Assistant · SMS Gateway · Invoice Scanner"]
 ```
 
-**Frontend** — Single-file HTML5/CSS3/JavaScript, no build step, responsive and RTL-aware.
-**Backend** — Supabase: PostgreSQL, Auth, Realtime, Edge Functions, Row Level Security.
-**Mobile** — Capacitor-wrapped Android app with native device APIs.
-**AI** — Google Gemini via a dedicated Edge Function, plus the local intent/forecasting logic described above.
-**Automation** — GitHub Actions for Android builds.
+- **Frontend** — Single-file HTML5/CSS3/JavaScript, no build step, responsive and RTL-aware.
+- **Backend** — Supabase: PostgreSQL, Auth, Realtime, Edge Functions, Row Level Security.
+- **Mobile** — Capacitor-wrapped Android app with native device APIs.
+- **AI** — Google Gemini via a dedicated Edge Function, plus the local intent/forecasting logic described above.
+- **Automation** — GitHub Actions for Android builds.
 
 ---
 
@@ -140,6 +169,7 @@ Sales can continue to be recorded when the connection drops. Pending sales are h
 - A separate access code gating sensitive assistant queries (sales, profit, inventory, financial data)
 - Server-side Edge Functions for AI calls, SMS sending, and invoice scanning, so provider credentials never reach the client
 
+> [!WARNING]
 > **Before deploying:** configure your own Supabase project. Never commit service-role keys, passwords, private API keys, or real production/customer data to a public repository.
 
 ---
@@ -154,6 +184,12 @@ Full-size images are in [`docs/screenshots/`](docs/screenshots/).
 | **Returns & Exchange**<br>![Returns](docs/screenshots/returns.png) | **Customers & Loyalty**<br>![Customer Club](docs/screenshots/customer-club.png) |
 | **Reports & Balance Sheet**<br>![Reports](docs/screenshots/reports.png) | **Settings**<br>![Settings](docs/screenshots/settings.png) |
 | **AI Assistant**<br>![Assistant](docs/screenshots/assistant.png) | **Android App**<br>![Android](docs/screenshots/android.png) |
+
+**More screenshots**
+
+| | | |
+|---|---|---|
+| **Customer club**<br>![Customer club](docs/screenshots/club.png) | **Customers**<br>![Customers](docs/screenshots/customer.png) | **Settings (printing and more)**<br>![Settings (printing and more)](docs/screenshots/settings2.png) |
 
 ---
 
@@ -204,7 +240,8 @@ This public repository is a demonstration/portfolio version focused on showing t
 
 ## Public Repository Notice
 
-This is a public demo version of a private, actively-used production system. Do not commit — and this repository does not contain — service-role keys, private API keys, passwords, real customer information, real financial records, or other production credentials. For a real deployment, connect Artemis to your own Supabase project.
+> [!IMPORTANT]
+> This is a public demo version of a private, actively-used production system. Do not commit — and this repository does not contain — service-role keys, private API keys, passwords, real customer information, real financial records, or other production credentials. For a real deployment, connect Artemis to your own Supabase project.
 
 ---
 

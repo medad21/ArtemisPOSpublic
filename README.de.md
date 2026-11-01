@@ -1,17 +1,57 @@
-# Artemis ERP — Warenwirtschafts- und Kassensystem
+<div align="center">
 
-🌐 **[English](README.md) | [فارسی](README.fa.md) | [Deutsch](README.de.md) | [العربية](README.ar.md)**
+<img src="docs/branding/artemis-mark.svg" width="104" height="104" alt="Artemis-Logo">
 
-**Eine Full-Stack-Anwendung zur Geschäftsverwaltung und als Kassensystem (POS) für kleine Unternehmen und Einzelhandelsgeschäfte, mit integriertem, datenbankgestütztem KI-Assistenten und Umsatzprognose.**
+# Artemis ERP
+### Lager · Verkauf · Business Intelligence
 
-`JavaScript` · `HTML/CSS` · `Supabase` · `PostgreSQL` · `Capacitor` · `Gemini API`
+**Eine moderne Plattform für Einzelhandel und Kassensysteme – mit Offline-Abläufen, Echtzeit-Synchronisierung über Supabase und KI-gestütztem Geschäftsassistenten.**
 
-![Artemis Dashboard](docs/screenshots/dashboard.png)
+<p>
+  <img src="https://img.shields.io/badge/version-6.1.0-7c3aed?style=for-the-badge" alt="Version 6.1.0">
+  <img src="https://img.shields.io/badge/AI-Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Gemini KI">
+  <img src="https://img.shields.io/badge/backend-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+</p>
+<p>
+  <img src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Web-HTML%20%2F%20CSS-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML und CSS">
+  <img src="https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Mobile-Android%20%2F%20Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white" alt="Android und Capacitor">
+  <img src="https://img.shields.io/badge/Mode-Offline%20Ready-238636?style=flat-square" alt="Offline-fähig">
+</p>
+
+**Kasse · Lagerverwaltung · Rückgaben · Buchhaltung · Umsatzprognose · KI-Assistent**
+
+🌐 **[English](README.md) · [فارسی](README.fa.md) · [Deutsch](README.de.md) · [العربية](README.ar.md)**
+
+<img src="docs/screenshots/dashboard.png" alt="Artemis-Dashboard" width="92%">
+
+</div>
 
 **Auf einen Blick:**
 - Vollständiges Einzelhandels-POS/ERP-System (Verkauf, Lager, Rückgaben, Buchhaltung, Druck) — plus datenbankgestützter KI-Assistent und heuristische Umsatzprognose, nicht nur CRUD.
 - Selbst gehostet auf einem eigenen Supabase-Projekt (Postgres + Auth + Realtime + Edge Functions); läuft sowohl als Web-App als auch als native Android-App über Capacitor.
 - Über zwei Jahre im echten, täglichen Einsatz in einem realen Geschäft entwickelt und verfeinert — kein Tutorial-Projekt.
+
+---
+
+**Inhalt**
+
+- [Überblick](#überblick)
+- [Warum Artemis?](#warum-artemis)
+- [Kernfunktionen](#kernfunktionen)
+- [KI-gestützter Geschäftsassistent](#ki-gestützter-geschäftsassistent)
+- [Technische Architektur](#technische-architektur)
+- [Offline & Synchronisierung](#offline--synchronisierung)
+- [Sicherheit & Autorisierung](#sicherheit--autorisierung)
+- [Screenshots](#screenshots)
+- [Erste Schritte](#erste-schritte)
+- [Android-Build](#android-build)
+- [Technische Highlights](#technische-highlights)
+- [Repository-Struktur](#repository-struktur)
+- [Hinweis zum öffentlichen Repository](#hinweis-zum-öffentlichen-repository)
+- [Autor](#autor)
+- [Lizenz](#lizenz)
 
 ---
 
@@ -21,6 +61,7 @@
 
 Es läuft als browserbasierte Web-App **und** als native Android-App (über Capacitor), beide gestützt auf ein selbst gehostetes [Supabase](https://supabase.com)-Projekt — jede Installation besitzt ihre Daten vollständig selbst.
 
+> [!NOTE]
 > **Projektstatus:** Aktives persönliches Projekt, im täglichen Produktiveinsatz. Dieses Repository ist eine öffentliche Demo-/Portfolio-Version — siehe [Hinweis zum öffentlichen Repository](#hinweis-zum-öffentlichen-repository).
 
 ## Warum Artemis?
@@ -39,25 +80,18 @@ Konkrete Beispiele aus diesem Code: Artikeltausch, bei dem nur die Preisdifferen
 
 ## Kernfunktionen
 
-**Verkauf & Kasse** — Kassiervorgang mit Barcode-Scan, Rabatte, Zahlung per Bar/Karte/Überweisung/Kredit, Großhandels-(Kollegen-)Verkauf, sowie ein separates Modul zur Auftragskalkulation für Dienstleistungen (z. B. Druck-/Kopieraufträge) mit aufgeschlüsselten Kostenkomponenten.
-
-**Lagerverwaltung** — Bestandsverfolgung mit Warnungen bei niedrigem Lagerbestand, Kategorien, Kardex (Ein-/Ausgangsverlauf) pro Artikel, sowie Erstellung/Druck von Barcode-Etiketten für Artikel ohne vorhandenen Barcode.
-
-**Rückgaben & Umtausch** — Vollständige oder teilweise Rückgaben mit automatischer Bestands- und Gewinnanpassung; Artikeltausch, bei dem nur die Preisdifferenz abgerechnet wird, vollständig nachverfolgt statt als manuelle Notlösung gehandhabt.
-
-**Kundenverwaltung** — Profile, Kaufhistorie, Schuldenverfolgung, sowie Massen-SMS an Schuldner/alle Kunden/beliebige Nummern über eine austauschbare Anbieterschicht (Kavenegar, MeliPayamak, SMS.ir oder jede REST-API über einen generischen Webhook).
-
-**Treueprogramm** — Punktebasierte Kundenbindung mit konfigurierbaren Sammel-/Einlöseraten und kaufbasierten Kundenstufen (Standard / aktiver Käufer / VIP).
-
-**Buchhaltung & Berichte** — Bilanz, mehrere Kassen-/Bankkonten, Ausgabenverfolgung, Eröffnungsbilanz, Tages-/Gewinnberichte sowie Erinnerungen für Einkäufe und Scheckzahlungen.
-
-**Drucken** — A4/A5/A6 sowie Thermo-Bondruck (58mm/80mm), direkter Bluetooth-Druck aus der Android-App, vollständig konfigurierbarer Rechnungsinhalt und Betrag in Worten.
-
-**Mehrbenutzerfähig** — Manager-/Mitarbeiterrollen mit getrennten Logins und Nachverfolgung der Aktionen jedes Mitarbeiters.
-
-**Lokalisierung** — Persisch, Englisch, Deutsch, Arabisch, mit vollständiger RTL-Unterstützung und mehreren Währungen.
-
-**Web + Android** — Einzeldatei-Web-App (kein Build-Schritt nötig) sowie eine mit Capacitor verpackte Android-App mit kamerabasiertem Barcode-Scan, Fingerabdruck-Login und lokalen Benachrichtigungen.
+| Bereich | Details |
+|---|---|
+| **Verkauf & Kasse** | Kassiervorgang mit Barcode-Scan, Rabatte, Zahlung per Bar/Karte/Überweisung/Kredit, Großhandels-(Kollegen-)Verkauf, sowie ein separates Modul zur Auftragskalkulation für Dienstleistungen (z. B. Druck-/Kopieraufträge) mit aufgeschlüsselten Kostenkomponenten. |
+| **Lagerverwaltung** | Bestandsverfolgung mit Warnungen bei niedrigem Lagerbestand, Kategorien, Kardex (Ein-/Ausgangsverlauf) pro Artikel, sowie Erstellung/Druck von Barcode-Etiketten für Artikel ohne vorhandenen Barcode. |
+| **Rückgaben & Umtausch** | Vollständige oder teilweise Rückgaben mit automatischer Bestands- und Gewinnanpassung; Artikeltausch, bei dem nur die Preisdifferenz abgerechnet wird, vollständig nachverfolgt statt als manuelle Notlösung gehandhabt. |
+| **Kundenverwaltung** | Profile, Kaufhistorie, Schuldenverfolgung, sowie Massen-SMS an Schuldner/alle Kunden/beliebige Nummern über eine austauschbare Anbieterschicht (Kavenegar, MeliPayamak, SMS.ir oder jede REST-API über einen generischen Webhook). |
+| **Treueprogramm** | Punktebasierte Kundenbindung mit konfigurierbaren Sammel-/Einlöseraten und kaufbasierten Kundenstufen (Standard / aktiver Käufer / VIP). |
+| **Buchhaltung & Berichte** | Bilanz, mehrere Kassen-/Bankkonten, Ausgabenverfolgung, Eröffnungsbilanz, Tages-/Gewinnberichte sowie Erinnerungen für Einkäufe und Scheckzahlungen. |
+| **Drucken** | A4/A5/A6 sowie Thermo-Bondruck (58mm/80mm), direkter Bluetooth-Druck aus der Android-App, vollständig konfigurierbarer Rechnungsinhalt und Betrag in Worten. |
+| **Mehrbenutzerfähig** | Manager-/Mitarbeiterrollen mit getrennten Logins und Nachverfolgung der Aktionen jedes Mitarbeiters. |
+| **Lokalisierung** | Persisch, Englisch, Deutsch, Arabisch, mit vollständiger RTL-Unterstützung und mehreren Währungen. |
+| **Web + Android** | Einzeldatei-Web-App (kein Build-Schritt nötig) sowie eine mit Capacitor verpackte Android-App mit kamerabasiertem Barcode-Scan, Fingerabdruck-Login und lokalen Benachrichtigungen. |
 
 ---
 
@@ -99,31 +133,26 @@ Finanz- und Bestandsabfragen können einen separaten Zugangscode erfordern, bevo
 
 ## Technische Architektur
 
-```text
-                          Artemis
-                              |
-             +----------------+----------------+
-             |                                 |
-         Web / Browser                   Android-App
-             |                                 |
-             +----------------+----------------+
-                              |
-                           Supabase
-                              |
-       +----------------------+----------------------+
-       |                      |                       |
-   PostgreSQL              Auth (RLS)              Realtime
-       |
-   Edge Functions
-       |
-  Gemini-KI-Assistent · SMS-Gateway · Rechnungsscanner
+```mermaid
+flowchart TB
+    APP(["Artemis"]) --> WEB["Web / Browser"]
+    APP --> AND["Android-App"]
+    WEB --> SB
+    AND --> SB
+    subgraph SB["Supabase"]
+        PG[("PostgreSQL")]
+        AU["Auth (RLS)"]
+        RT["Realtime"]
+        EF["Edge Functions"]
+    end
+    EF --> AI["Gemini-KI-Assistent · SMS-Gateway · Rechnungsscanner"]
 ```
 
-**Frontend** — Einzeldatei-HTML5/CSS3/JavaScript, kein Build-Schritt, responsiv und RTL-fähig.
-**Backend** — Supabase: PostgreSQL, Auth, Realtime, Edge Functions, Row Level Security.
-**Mobil** — Mit Capacitor verpackte Android-App mit nativen Geräte-APIs.
-**KI** — Google Gemini über eine dedizierte Edge Function, plus die oben beschriebene lokale Intent-/Prognoselogik.
-**Automatisierung** — GitHub Actions für Android-Builds.
+- **Frontend** — Einzeldatei-HTML5/CSS3/JavaScript, kein Build-Schritt, responsiv und RTL-fähig.
+- **Backend** — Supabase: PostgreSQL, Auth, Realtime, Edge Functions, Row Level Security.
+- **Mobil** — Mit Capacitor verpackte Android-App mit nativen Geräte-APIs.
+- **KI** — Google Gemini über eine dedizierte Edge Function, plus die oben beschriebene lokale Intent-/Prognoselogik.
+- **Automatisierung** — GitHub Actions für Android-Builds.
 
 ---
 
@@ -140,6 +169,7 @@ Verkäufe können weiterhin erfasst werden, wenn die Verbindung abbricht. Ausste
 - Ein separater Zugangscode, der sensible Assistentenabfragen (Verkauf, Gewinn, Lager, Finanzdaten) absichert
 - Serverseitige Edge Functions für KI-Aufrufe, SMS-Versand und Rechnungsscan, sodass Anbieter-Zugangsdaten den Client nie erreichen
 
+> [!WARNING]
 > **Vor der Bereitstellung:** Richte dein eigenes Supabase-Projekt ein. Committe niemals Service-Role-Schlüssel, Passwörter, private API-Schlüssel oder echte Produktions-/Kundendaten in ein öffentliches Repository.
 
 ---
@@ -154,6 +184,12 @@ Vollständige Bilder befinden sich in [`docs/screenshots/`](docs/screenshots/).
 | **Rückgaben & Umtausch**<br>![Rückgaben](docs/screenshots/returns.png) | **Kunden & Treueprogramm**<br>![Kundenclub](docs/screenshots/customer-club.png) |
 | **Berichte & Bilanz**<br>![Berichte](docs/screenshots/reports.png) | **Einstellungen**<br>![Einstellungen](docs/screenshots/settings.png) |
 | **KI-Assistent**<br>![Assistent](docs/screenshots/assistant.png) | **Android-App**<br>![Android](docs/screenshots/android.png) |
+
+**Weitere Screenshots**
+
+| | | |
+|---|---|---|
+| **Kundenclub**<br>![Kundenclub](docs/screenshots/club.png) | **Kunden**<br>![Kunden](docs/screenshots/customer.png) | **Einstellungen (Druck und mehr)**<br>![Einstellungen (Druck und mehr)](docs/screenshots/settings2.png) |
 
 ---
 
@@ -204,7 +240,8 @@ Dieses öffentliche Repository ist eine Demonstrations-/Portfolio-Version, die d
 
 ## Hinweis zum öffentlichen Repository
 
-Dies ist eine öffentliche Demo-Version eines privaten, aktiv genutzten Produktivsystems. Es enthält keine — und es dürfen keine — Service-Role-Schlüssel, private API-Schlüssel, Passwörter, echte Kundendaten, echte Finanzdaten oder sonstige Produktions-Zugangsdaten committet werden. Für einen echten Einsatz verbinde Artemis mit deinem eigenen Supabase-Projekt.
+> [!IMPORTANT]
+> Dies ist eine öffentliche Demo-Version eines privaten, aktiv genutzten Produktivsystems. Es enthält keine — und es dürfen keine — Service-Role-Schlüssel, private API-Schlüssel, Passwörter, echte Kundendaten, echte Finanzdaten oder sonstige Produktions-Zugangsdaten committet werden. Für einen echten Einsatz verbinde Artemis mit deinem eigenen Supabase-Projekt.
 
 ---
 
